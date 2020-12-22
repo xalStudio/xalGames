@@ -1,21 +1,18 @@
 #include "OnlyMessages.hpp"
 
 #include <chrono>
+#include <thread>
 
 namespace xal { namespace game { namespace game_loop {
     void OnlyMessages::run(GameLoop::RunFunction runFunction) {
-        auto m_currentTime = std::chrono::system_clock::now();
-
         while (true) {
-            auto timeNow = std::chrono::system_clock::now();
-            double frameTime = std::chrono::duration<double>(timeNow - m_currentTime).count();
-            m_currentTime = timeNow;
+            const auto& startTime = std::chrono::system_clock::now();
 
             runFunction();
                 
-            double remainingTime = std::chrono::duration<double>(m_currentTime - std::chrono::system_clock::now()).count();
-            if (remainingTime > 0.f) {
-                
+            double elapsedTime = std::chrono::duration<double>(std::chrono::system_clock::now() - startTime).count();
+            if (elapsedTime < m_TPS) {
+                std::this_thread::sleep_for(std::chrono::duration<double>(m_TPS - elapsedTime));
             }
         }
     }

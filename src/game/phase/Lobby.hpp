@@ -6,6 +6,7 @@
 
 #include "Phase.hpp"
 
+
 namespace xal { namespace game { namespace phase {
     class Lobby: public Phase {
     public:
@@ -20,5 +21,7 @@ namespace xal { namespace game { namespace phase {
 
     public:
         Lobby(const std::filesystem::path& luaFilePath);
+
+        void run(xal::game::session::Room* room) override;
     };
 } } }

@@ -14,7 +14,7 @@ namespace xal { namespace game { namespace phase {
     public:
         Game(const std::filesystem::path& luaFilePath);
 
-        void run();
+        void run(xal::game::session::Room* room) override;
 
     private:
         sol::state m_luaState;

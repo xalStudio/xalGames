@@ -28,6 +28,7 @@ include_directories(/usr/include/lua5.4/)
 
 set(
   SOURCES
+  "${PROJECT_SOURCE_DIR}/src/game/game_loop/OnlyMessages.cpp"
   "${PROJECT_SOURCE_DIR}/src/game/phase/Phase.cpp"
   "${PROJECT_SOURCE_DIR}/src/game/phase/Game.cpp"
   "${PROJECT_SOURCE_DIR}/src/game/phase/Lobby.cpp"
@@ -65,4 +66,4 @@ add_executable(
     ${SOURCES}
 )
 
-target_link_libraries("xalgames_server" pthread lua5.4)
+target_link_libraries("xalgames_server" pthread lua5.4 stdc++fs)

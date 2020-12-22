@@ -60,54 +60,17 @@ namespace xal { namespace game { namespace session {
                 std::error_code()
             );
         }
+
+        m_gameDir = std::filesystem::path(gameDir);
+        std::cout << "[Room]Game files checked. All good...\n"; 
     }
 
     void Room::run() {
-        // m_gamePhase = std::make_unique<phase::Lobby>(std::filesystem::path(m_gameDir / GAME__SERVER_DIR_PATH / phase::Lobby::LUA_FILE));
-
-        auto m_currentTime = std::chrono::system_clock::now();
-
-        while (true) {
-            const auto timeNow = std::chrono::system_clock::now();
-            double frameTime = std::chrono::duration<double>(timeNow - m_currentTime).count();
-            m_currentTime = timeNow;
-
-            if (frameTime > 0.25) {
-                std::cout << "Sleep for " << frameTime - 0.25f << "\n";
-                std::this_thread::sleep_for(std::chrono::duration<double>(frameTime - 0.25f));
-                frameTime = 0.25;
-            }
-
-            m_accumulator += frameTime;
-
-            std::cout << "m_accumulator: " << m_accumulator << "\n";
-
-            bool oneQueueEmpty = false;
-            while (m_accumulator >= m_TPS) {
-                json message;
-
-                {
-                    const std::lock_guard<std::mutex> lock(getMutex(m_currentQueue));
-
-                    auto& queue = getMessagesQueue(!m_currentQueue);
-
-                    if (queue.size() == 0) {
-                        if (oneQueueEmpty) break;
-
-                        m_currentQueue.store(!m_currentQueue);
-                        oneQueueEmpty = true;
-
-                        m_accumulator -= m_TPS;
-                        continue;
-                    }
-
-                    message = queue.front();
-                    queue.pop();
-                }
-
-                m_accumulator -= m_TPS;
-            }
-        }
+        std::cout << "Good here\n";
+        // std::cout << "EE " << m_gameDir;
+        // std::cout << "EE " << std::filesystem::path(m_gameDir / GAME__SERVER_DIR_PATH / phase::Lobby::LUA_FILE) << "\n";
+        m_gamePhase = std::make_unique<phase::Lobby>(phase::Lobby::LUA_FILE);
+        m_gamePhase->run(this);
     }
     
     void Room::onMessage(WebsocketServer* server, websocketpp::connection_hdl hdl, const json& message) {
