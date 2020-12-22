@@ -1,3 +1,6 @@
 [submodule "external_libs/websocketpp"]
 	path = external_libs/websocketpp
 	url = git@github.com:zaphoyd/websocketpp.git
+[submodule "external_libs/asio"]
+	path = external_libs/asio
+	url = git@github.com:chriskohlhoff/asio.git
