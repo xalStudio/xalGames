@@ -7,3 +7,6 @@
 [submodule "external_libs/sol2"]
 	path = external_libs/sol2
 	url = git@github.com:ThePhD/sol2.git
+[submodule "external_libs/json"]
+	path = external_libs/json
+	url = git@github.com:nlohmann/json.git
