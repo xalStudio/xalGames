@@ -24,7 +24,6 @@ int main(int argc, char** argv) {
     }
 
     network::Server server;
-
     server.initialize(port);
 
     if (arguments.has(ARG__ONLY_LOBBY)) {

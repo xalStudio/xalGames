@@ -1,12 +1,12 @@
-[submodule "server/external_libs/websocketpp"]
-	path = server/external_libs/websocketpp
+[submodule "external_libs/websocketpp"]
+	path = external_libs/websocketpp
 	url = git@github.com:zaphoyd/websocketpp.git
-[submodule "server/external_libs/asio"]
-	path = server/external_libs/asio
+[submodule "external_libs/asio"]
+	path = external_libs/asio
 	url = git@github.com:chriskohlhoff/asio.git
-[submodule "server/external_libs/sol2"]
-	path = server/external_libs/sol2
+[submodule "external_libs/sol2"]
+	path = external_libs/sol2
 	url = git@github.com:ThePhD/sol2.git
-[submodule "server/external_libs/json"]
-	path = server/external_libs/json
+[submodule "external_libs/json"]
+	path = external_libs/json
 	url = git@github.com:nlohmann/json.git
