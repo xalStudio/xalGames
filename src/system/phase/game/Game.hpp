@@ -6,7 +6,7 @@
 
 #include "Phase.hpp"
 
-namespace xal { namespace game { namespace phase {
+namespace xal { namespace system { namespace phase {
     class Game: public Phase {
     public:
         static const std::string LUA_FILE;
@@ -15,7 +15,6 @@ namespace xal { namespace game { namespace phase {
         Game(const std::filesystem::path& luaFilePath);
 
         void run(xal::game::session::Room* room) override;
-
     private:
         sol::state m_luaState;
     };

@@ -2,10 +2,10 @@
 
 #include "GameLoop.hpp"
 
-namespace xal { namespace game { namespace game_loop {
-    class OnlyMessages: public GameLoop {
+namespace xal { namespace system { namespace game_loop {
+    class VariableTimestep: public GameLoop {
     public:
-        OnlyMessages() = default;
+        VariableTimestep() = default;
 
         void run(GameLoop::RunFunction runFunction) override;
 

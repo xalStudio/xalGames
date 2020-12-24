@@ -9,9 +9,14 @@
 #include <atomic>
 
 #include "Session.hpp"
-#include <game/phase/Phase.hpp>
+#include <system/phase/Phase.hpp>
 
-namespace xal { namespace game { namespace session {
+namespace xal { namespace system { namespace phase {
+    class Lobby;
+    // class Game;
+} } }
+
+namespace xal { namespace system { namespace session {
     class Room: public Session {
     public:
         typedef std::string RoomID;
@@ -19,9 +24,6 @@ namespace xal { namespace game { namespace session {
         static const std::string ARG__GAME_DIR;
         static const std::string GAME__SERVER_DIR_PATH;
         static const std::string GAME__CLIENT_DIR_PATH;
-    
-    private:
-        typedef std::queue<nlohmann::json> MessagesQueue;
 
     public:
         Room() = default;
@@ -32,23 +34,13 @@ namespace xal { namespace game { namespace session {
 
         void onMessage(WebsocketServer* server, websocketpp::connection_hdl hdl, const nlohmann::json& message) override;
 
-    private:
-        std::mutex& getMutex(bool getA);
-        MessagesQueue& getMessagesQueue(bool getA);
+    protected:
+        friend class Lobby;
+        // friend class Game;
 
     private:
         std::filesystem::path m_gameDir;
 
         std::unique_ptr<phase::Phase> m_gamePhase;
-
-        std::atomic_bool m_currentQueue = std::atomic_bool(true);
-        std::mutex m_mutexA;
-        std::mutex m_mutexB;
-        MessagesQueue m_messagesQueueA;
-        MessagesQueue m_messagesQueueB;
-
-        uint m_ticks = 60;
-        double m_TPS = 1.f / m_ticks;
-        double m_accumulator = 0.f;
     };
 } } }

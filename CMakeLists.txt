@@ -28,12 +28,15 @@ include_directories(/usr/include/lua5.4/)
 
 set(
   SOURCES
-  "${PROJECT_SOURCE_DIR}/src/game/game_loop/OnlyMessages.cpp"
-  "${PROJECT_SOURCE_DIR}/src/game/phase/Phase.cpp"
-  "${PROJECT_SOURCE_DIR}/src/game/phase/Game.cpp"
-  "${PROJECT_SOURCE_DIR}/src/game/phase/Lobby.cpp"
-  "${PROJECT_SOURCE_DIR}/src/game/session/Room.cpp"
-  "${PROJECT_SOURCE_DIR}/src/game/session/RoomPool.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/engine/LuaEngine.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/game_loop/VariableTimestep.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/message_queue/JSONMessagesQueue.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/message_queue/LuaMessagesQueue.cpp"
+  # "${PROJECT_SOURCE_DIR}/src/system/phase/Game.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/phase/lobby/Lobby.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/phase/lobby/LuaLobby.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/session/Room.cpp"
+  "${PROJECT_SOURCE_DIR}/src/system/session/RoomPool.cpp"
   "${PROJECT_SOURCE_DIR}/src/network/Server.cpp"
   "${PROJECT_SOURCE_DIR}/src/utils/CmdArguments.cpp"
   "${PROJECT_SOURCE_DIR}/src/main.cpp"

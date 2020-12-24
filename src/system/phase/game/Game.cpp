@@ -3,10 +3,10 @@
 #include <iostream>
 #include <system_error>
 
-#include <game/session/Room.hpp>
-#include <game/game_loop/OnlyMessages.hpp>
+#include <system/session/Room.hpp>
+#include <system/game_loop/VariableTimestep.hpp>
 
-namespace xal { namespace game { namespace phase {
+namespace xal { namespace system { namespace phase {
     const std::string Game::LUA_FILE = "game.lua";
 
     Game::Game(const std::filesystem::path& luaFilePath)
@@ -14,7 +14,7 @@ namespace xal { namespace game { namespace phase {
     { }
 
     void Game::run(xal::game::session::Room* room) {
-        game_loop::OnlyMessages gameLoop;
+        game_loop::VariableTimestep gameLoop;
 
         gameLoop.run([this, room](){
 

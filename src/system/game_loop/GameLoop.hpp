@@ -2,7 +2,7 @@
 
 #include <functional>
 
-namespace xal { namespace game { namespace game_loop {
+namespace xal { namespace system { namespace game_loop {
     class GameLoop {
     public:
         typedef std::function<void()> RunFunction;

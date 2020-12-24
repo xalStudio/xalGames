@@ -1,6 +1,6 @@
 #include "RoomPool.hpp"
 
-namespace xal { namespace game { namespace session {
+namespace xal { namespace system { namespace session {
     // void RoomPool::run() {
 
     // }

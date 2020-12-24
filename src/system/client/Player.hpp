@@ -1,6 +1,6 @@
 #pragma once
 
-namespace xal { namespace game {
+namespace xal { namespace system {
     class Player {
 
     };

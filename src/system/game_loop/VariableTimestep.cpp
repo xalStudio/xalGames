@@ -1,10 +1,10 @@
-#include "OnlyMessages.hpp"
+#include "VariableTimestep.hpp"
 
 #include <chrono>
 #include <thread>
 
-namespace xal { namespace game { namespace game_loop {
-    void OnlyMessages::run(GameLoop::RunFunction runFunction) {
+namespace xal { namespace system { namespace game_loop {
+    void VariableTimestep::run(GameLoop::RunFunction runFunction) {
         while (true) {
             const auto& startTime = std::chrono::system_clock::now();
 
